@@ -30,9 +30,18 @@ public class ProductCatalogueClient {
 
         Collections.sort(products);
 
-        System.out.println("Sorted Products: ");
+        System.out.println("Comparable Sorted Products By Product Price: ");
 
         for(Product product: products){
+
+            System.out.println(product.getProductName());
+        }
+
+        Collections.sort(products, new ProductQuantityComparator());
+
+        System.out.println("Comparator Sorted Products By Product Quantity: ");
+
+        for(Product product : products){
 
             System.out.println(product.getProductName());
         }
