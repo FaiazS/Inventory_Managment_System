@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Inventory<T extends Product>{
+public class Inventory<T extends Product> {
 
     private HashMap<String, T> inventory;
 
@@ -17,7 +17,12 @@ public class Inventory<T extends Product>{
 
     }
 
-    public void addInventory(String productId, T product){
+    public void addInventory(String productId, T product) throws InvalidQuantityException {
+
+        if(product.getProductQuantity() <= 0){
+
+            throw new InvalidQuantityException("Please provide a valid quantity you want to add");
+        }
 
         inventory.putIfAbsent(productId, product);
 
